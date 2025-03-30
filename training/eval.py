@@ -6,14 +6,14 @@ import pickle
 
 if __name__ == '__main__':
 
-    file = "cat_dataset.pkl"
+   file = "test_dataset.pkl"
 
-    with open(file, "rb") as f:
-       test_images, test_labels = pickle.load(f)
+   with open(file, "rb") as f:
+      test_images, test_labels = pickle.load(f)
 
-    model = tf.keras.models.load_model("test_model.h5")
+   model = tf.keras.models.load_model("test_model.h5")
+   test_loss, test_accuracy = model.evaluate(test_images, test_labels)
+   model.summary()
 
-    test_loss, test_accuracy = model.evaluate(test_images, test_labels)
-
-    print(test_loss)
-    print(test_accuracy)
+   print(test_loss)
+   print(test_accuracy)
